@@ -2,9 +2,9 @@
 
 ## Domain Proyek
 
-Dalam dunia teknologi modern, pengenalan emosi berdasarkan data audio merupakan bagian dari analisis sentimen multimodal yang dapat bermanfaat dalam berbagai aplikasi seperti asisten virtual, layanan pelanggan, terapi kesehatan mental, dan banyak lagi. Pengenalan emosi berbasis audio dapat meningkatkan interaksi pengguna dengan teknologi dengan memberikan respons yang lebih personal dan empatik.
+Dalam dunia teknologi modern, pengenalan emosi berdasarkan data audio merupakan bagian dari analisis sentimen multimodal yang dapat bermanfaat dalam berbagai aplikasi seperti asisten virtual, layanan pelanggan, terapi kesehatan mental, dan banyak lagi. Pengenalan emosi berbasis audio dapat meningkatkan interaksi pengguna dengan teknologi dengan memberikan respons yang lebih personal dan empatik [1]. 
 
-Penelitian menunjukkan bahwa analisis emosi melalui sinyal audio merupakan pendekatan yang efektif dalam memahami keadaan psikologis seseorang, meski terdapat tantangan dalam perbedaan karakteristik suara seperti intonasi, nada, dan durasi yang harus diperhatikan dalam pengklasifikasian emosi. Proyek ini memanfaatkan teknik ekstraksi fitur audio seperti MFCC (Mel-Frequency Cepstral Coefficients) dan spektral untuk memperoleh representasi karakteristik suara, serta model machine learning dan deep learning untuk melakukan klasifikasi emosi secara akurat.
+Penelitian menunjukkan bahwa analisis emosi melalui sinyal audio merupakan pendekatan yang efektif dalam memahami keadaan psikologis seseorang, meski terdapat tantangan dalam perbedaan karakteristik suara seperti intonasi, nada, dan durasi yang harus diperhatikan dalam pengklasifikasian emosi. Proyek ini memanfaatkan teknik ekstraksi fitur audio seperti MFCC (Mel-Frequency Cepstral Coefficients) dan spektral untuk memperoleh representasi karakteristik suara [3]. Model machine learning dan deep learning digunakan untuk melakukan pembelajaran terhadap data latih hingga menghasilkan prediksi yang akurat.
 
 **Referensi:**
 1. [Vimal, B., Surya, M., Sridhar, V. S., & Ashok, A. (2021, July). Mfcc based audio classification using machine learning. In 2021 12th International Conference on Computing Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE.](https://www.researchgate.net/profile/Asha-Ashok-3/publication/355892482_MFCC_Based_Audio_Classification_Using_Machine_Learning/links/638163407b0e356feb848b3d/MFCC-Based-Audio-Classification-Using-Machine-Learning.pdf)
@@ -16,20 +16,20 @@ Penelitian menunjukkan bahwa analisis emosi melalui sinyal audio merupakan pende
 
 Proyek ini bertujuan menjawab beberapa permasalahan sebagai berikut:
 - Bagaimana mengekstraksi fitur-fitur audio yang relevan untuk klasifikasi emosi?
-- Algoritma mana yang lebih efektif antara Random Forest dan Deep Neural Network dalam klasifikasi emosi berbasis audio?
+- Algoritma mana yang lebih efektif antara Random Forest dan Dense Neural Network dalam klasifikasi emosi berbasis audio?
 - Bagaimana memaksimalkan akurasi model dengan optimasi hyperparameter?
 
 ### Goals
 
 Tujuan dari proyek ini adalah:
 - Mengidentifikasi fitur audio yang efektif dalam pengklasifikasian emosi.
-- Membandingkan performa model Random Forest dan Deep Neural Network dalam melakukan klasifikasi emosi.
+- Membandingkan performa model Random Forest dan Dense Neural Network dalam melakukan klasifikasi emosi.
 - Mengoptimalkan performa model melalui teknik Bayesian Optimization untuk mencapai akurasi tertinggi.
 
 ### Solution Statements
 
-1. Menggunakan dua algoritma klasifikasi, yaitu Random Forest dan Deep Neural Network, serta membandingkan kinerja keduanya berdasarkan metrik akurasi, f1-score, precision, dan recall.
-2. Melakukan optimasi model menggunakan **Bayesian Optimization** pada model Deep Neural Network untuk mendapatkan kombinasi hyperparameter yang optimal.
+1. Menggunakan dua algoritma klasifikasi, yaitu Random Forest dan Dense Neural Network, serta membandingkan kinerja keduanya berdasarkan metrik akurasi, f1-score, precision, dan recall.
+2. Melakukan optimasi model menggunakan **Bayesian Optimization** pada model Dense Neural Network untuk mendapatkan kombinasi hyperparameter yang optimal.
 
 ## Data Understanding
 
@@ -44,15 +44,17 @@ Dataset ini dapat diunduh dari sumber berikut: [Toronto emotional speech set (TE
 Dataset audio biasanya tidak memiliki variabel seperti pada data tabular, tetapi terdapat label yang menunjukkan emosi yang direpresentasikan dalam rekaman. Setiap rekaman kemudian diekstrak fiturnya, sehingga variabel fitur yang digunakan adalah:
 
 - **MFCC**: Mel-Frequency Cepstral Coefficients, yang mengukur amplitudo suara pada berbagai frekuensi.
-- **Spektral Bandwidth**: Menggambarkan lebar spektrum dari sinyal.
+- **Spektral Bandwidth**: Menggambarkan lebar rentang frekuensi dari sinyal.
 - **Spektral Rolloff**: Frekuensi di bawah sejumlah persentase dari energi total spektrum.
 - **Spektral Contrast**: Perbedaan frekuensi tertinggi dan terendah dari spektrum audio.
+- **Spektral Centroid**: Merupakan pusat massa frekuensi dalam spektrum sinyal audio.
+- **Zero Crossing Rate**: Merupakan jumlah sinyal yang melewati titik 0 (nol) yang megindikasikan kelembutan suara.
 
 ## Data Preparation
 
 Tahapan data preparation yang dilakukan meliputi:
 1. **Pengaturan Direktori dan DataFrame (file path dan label)** : Sebelum melakukan pemrosesan data, perlu diatur pengelompokkan file ke dalam direktori yang sesuai dengan jenis labelnya. kemudian membuat DataFrame awal berisi lokasi file beserta labelnya.
-2. **Ekstraksi Fitur**: Setiap file audio diekstraksi menggunakan fungsi ekstraksi fitur seperti MFCC, spektral bandwidth, spektral rolloff, dan spektral contrast.
+2. **Ekstraksi Fitur**: Setiap file audio diekstraksi menggunakan library [librosa](https://librosa.org/doc/latest/index.html) seperti MFCC, spektral bandwidth, spektral rolloff, spektral centroid, dan zero crossing rate (zcr).
 3. **Normalisasi Data**: Semua fitur dinormalisasi untuk meningkatkan performa model. Teknik normalisasi ini dilakukan agar rentang fitur tidak terlalu bervariasi, yang dapat mempersulit model dalam menemukan pola.
 4. **Split Dataset**: Dataset dibagi menjadi data latih dan validasi untuk melatih dan menguji performa model.
 
@@ -68,7 +70,7 @@ Kelebihan dari Random Forest:
 - Mudah untuk diimplementasikan dan sangat cocok untuk data dengan dimensi yang lebih sedikit.
 - Kurang rentan terhadap overfitting pada data.
 
-### Deep Neural Network (DNN)
+### Dense Neural Network (DNN)
 
 Model DNN dirancang dengan beberapa lapisan tersembunyi, menggunakan fungsi aktivasi ReLU dan softmax pada lapisan output. Hyperparameter yang disesuaikan melalui Bayesian Optimization antara lain:
 - Jumlah unit pada setiap lapisan tersembunyi.
@@ -85,6 +87,19 @@ Bayesian Optimization digunakan untuk mencari kombinasi parameter terbaik pada D
 
 ## Evaluation
 
+Pada pelatihan menggunakan Neural Network Loss function yang digunakan adalah `Sparse Categorical Crossentropy`, 
+formula :
+
+   \[
+   \text{Loss} = -\frac{1}{N} \sum_{i=1}^{N} \log(p_{i, y_i})
+   \]
+
+   Keterangan:
+   - \( N \) itu jumlah sampel (data) di satu *batch*.
+   - \( p_{i, y_i} \) itu probabilitas prediksi model buat kelas yang bener (kelas sebenarnya) dari data ke-\( i \).
+   - \( y_i \) adalah label sebenarnya dari data ke-\( i \).
+
+
 Proyek ini menggunakan beberapa metrik evaluasi untuk menilai performa model:
 
 1. **Akurasi**: Proporsi prediksi benar terhadap semua prediksi.
@@ -96,12 +111,18 @@ Proyek ini menggunakan beberapa metrik evaluasi untuk menilai performa model:
 
 | Model          | Precision | Recall | F1-Score | Accuracy |
 |----------------|-----------|--------|----------|----------|
-| Random Forest  | 0.95      | 0.96   | 0.95     | 95%      |
-| Neural Network | 0.95      | 0.95   | 0.95     | 95%      |
+| Random Forest  | 0.96      | 0.96   | 0.96     | 96%      |
+| Neural Network | 0.97      | 0.97   | 0.97     | 97%      |
 
-Dari hasil evaluasi, kedua model memberikan performa yang serupa dalam hal akurasi dan F1-score, dengan Random Forest sedikit lebih unggul dalam recall, sedangkan Neural Network lebih unggul dalam precision. 
+Secara keseluruhan hasil performa model dijelaskan sebagai berikut :
+**Akurasi**
+`Random Forest`: Akurasi 0.96 atau 96%.
+`Neural Network`: Akurasi 0.97 atau 97%.
+Maka dari itu Neural Network memiliki akurasi sedikit lebih tinggi dibandingkan dengan Random Forest, menunjukkan bahwa model Neural Network lebih mampu menangkap pola dalam data ini.
 
-Secara keseluruhan, kedua model memberikan performa yang tinggi, namun **Random Forest dipilih sebagai model terbaik** karena hasil recall-nya yang lebih baik dan stabil dalam klasifikasi emosi berbasis audio.
+**Recall, F1-Score, Precision**
+`Random Forest` menunjukkan performa baik namun sedikit lebih bervariasi di beberapa kelas (misalnya, pada kelas "happy" dan "surprise").
+`Neural Network` memiliki performa lebih konsisten di berbagai kelas, dengan hampir semua kelas memiliki precision, recall, dan F1-score di atas 0.94, serta lebih tinggi pada kelas yang lebih sulit seperti "surprise."
 
 ## Kesimpulan
 
