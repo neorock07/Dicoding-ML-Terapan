@@ -58,6 +58,35 @@ Tahapan data preparation yang dilakukan meliputi:
 3. **Normalisasi Data**: Semua fitur dinormalisasi untuk meningkatkan performa model. Teknik normalisasi ini dilakukan agar rentang fitur tidak terlalu bervariasi, yang dapat mempersulit model dalam menemukan pola.
 4. **Split Dataset**: Dataset dibagi menjadi data latih dan validasi untuk melatih dan menguji performa model.
 
+## Eksplorasi Data
+
+Tahapan penting yang dilakukan untuk mengetahui karakteristik data maka dilakukan eksplorasi guna menemukan insight pada data. Hasil eksplorasi akan dijelaskan sebagai berikut :
+
+### Analisis MFCC 
+
+![image](https://github.com/user-attachments/assets/94e888b1-aa87-4c90-9b3f-6bbe89a03f44)
+
+Untuk mengolah data sinyak audio ini kita perlu mengubah data yang masih dalam domain waktu untuk menjadi data dalam domain frekuensi, alasannya karena kita dapat mudah menemukan pola-pola frekuensi yang berkarakter, ini sama halnya dengan cara telinga kita mendengar yaitu kita akan peka terhadap bermacam-macam pola frekuensi dari rambatan suara tersebut ketimbang memikirkan amplitudio sinyal suara tiap waktu.
+
+`MFCC` (**Mel Frequency Cepstral Coefficient**) merupakan salah satu bentuk data sinyal audio dalam bentuk domain frekuensi dengan rentang skala Mel, skala Mel ini adalah skala frekuensi yang didasarkan pada cara manusia mendengar suara.
+
+Kode ini akan menampilkan grafik map dari MFCC tiap sample file audio. koefisien MFCC yang diambil berjumlah 13 koefisien karena biasanya koefisien lebih dari 13 adalah sebuah noise, pada grafik tersebut juga terlihat rentang nilai desible antara 100 db - 600 db.
+
+### Distribusi Spektral 
+
+**Distribusi Spektral Roll Off**
+
+![image](https://github.com/user-attachments/assets/9c6bcff0-1f15-468c-9e57-4ab2f551a52e)
+
+Eksplorasi selanjutnya yaitu untuk melihat distribusi data `Spectral Roll-Off` ini merupakan data yang mengindikasikan frekuensi dengan energi nya 95% di bawah normal.
+dapat dilihat data ini juga terdistribusi normal, dengan jumlah data Roll-off terbanyak diantara 4000-5000 Hz.
+
+**Distribusi Spektral Centroid**
+
+![image](https://github.com/user-attachments/assets/4861caf1-da65-43b4-9aeb-8db942d13562)
+
+Kode ini digunakan untuk melihat distribusi pusat massa sinyal atau `Spectral Centroid`, nilai ini adalah frekuensi rata-rata sinyal yang mengindikasikan karakteristik suara yaitu bernada tinggi atau rendah. Pada grafik di atas dapat terlihat mayoritas pusat massa audio pada dataset ini pada frekuensi antara 2000-2500 Hz.
+
 ## Modeling
 
 Pada proyek ini, dua model diterapkan untuk klasifikasi emosi:
@@ -87,19 +116,18 @@ Bayesian Optimization digunakan untuk mencari kombinasi parameter terbaik pada D
 
 ## Evaluation
 
-Pada pelatihan menggunakan Neural Network Loss function yang digunakan adalah `Sparse Categorical Crossentropy`, 
+Pada pelatihan menggunakan Neural Network Loss function yang digunakan adalah `Sparse Categorical Crossentropy`.
+
 formula :
 
 ![image](https://github.com/user-attachments/assets/c2f372ad-0132-4536-baa2-5ccc7df2e2e3)
 
 Keterangan:
+
 ![image](https://github.com/user-attachments/assets/afba54d7-9e3b-48b5-8d08-0181acfe2ed9)
 
 
-Penulisan ini akan tampil dengan format matematika yang rapi di Markdown.
-
-
-Proyek ini menggunakan beberapa metrik evaluasi untuk menilai performa model:
+Untuk metriks pada proyek ini menggunakan beberapa metrik evaluasi untuk menilai performa model:
 
 1. **Akurasi**: Proporsi prediksi benar terhadap semua prediksi.
 2. **Precision**: Proporsi prediksi benar dari total prediksi positif.
