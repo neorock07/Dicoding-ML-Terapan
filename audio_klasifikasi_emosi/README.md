@@ -7,9 +7,9 @@ Dalam dunia teknologi modern, pengenalan emosi berdasarkan data audio merupakan 
 Penelitian menunjukkan bahwa analisis emosi melalui sinyal audio merupakan pendekatan yang efektif dalam memahami keadaan psikologis seseorang, meski terdapat tantangan dalam perbedaan karakteristik suara seperti intonasi, nada, dan durasi yang harus diperhatikan dalam pengklasifikasian emosi. Proyek ini memanfaatkan teknik ekstraksi fitur audio seperti MFCC (Mel-Frequency Cepstral Coefficients) dan spektral untuk memperoleh representasi karakteristik suara, serta model machine learning dan deep learning untuk melakukan klasifikasi emosi secara akurat.
 
 **Referensi:**
-- [MFCC Based Audio Classification Using Machine Learning](https://www.researchgate.net/profile/Asha-Ashok-3/publication/355892482_MFCC_Based_Audio_Classification_Using_Machine_Learning/links/638163407b0e356feb848b3d/MFCC-Based-Audio-Classification-Using-Machine-Learning.pdf)
-- [Automatic Classi¯cation of Bird Sounds: Using MFCC and Mel Spectrogram Features with Deep Learning](https://www.worldscientific.com/doi/pdf/10.1142/S2196888822500300)
-- [Vimal, B., Surya, M., Sridhar, V. S., & Ashok, A. (2021, July). Mfcc based audio classification using machine learning. In 2021 12th International Conference on Computing Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE.](https://www.sciencedirect.com/science/article/pii/S1877050920318512)
+1. [Vimal, B., Surya, M., Sridhar, V. S., & Ashok, A. (2021, July). Mfcc based audio classification using machine learning. In 2021 12th International Conference on Computing Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE.](https://www.researchgate.net/profile/Asha-Ashok-3/publication/355892482_MFCC_Based_Audio_Classification_Using_Machine_Learning/links/638163407b0e356feb848b3d/MFCC-Based-Audio-Classification-Using-Machine-Learning.pdf)
+2. [Carvalho, S., & Gomes, E. F. (2023). Automatic classification of bird sounds: using MFCC and mel spectrogram features with deep learning. Vietnam Journal of Computer Science, 10(01), 39-54.](https://www.worldscientific.com/doi/pdf/10.1142/S2196888822500300)
+3. [Vimal, B., Surya, M., Sridhar, V. S., & Ashok, A. (2021, July). Mfcc based audio classification using machine learning. In 2021 12th International Conference on Computing Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE.](https://www.sciencedirect.com/science/article/pii/S1877050920318512)
 ## Business Understanding
 
 ### Problem Statements
