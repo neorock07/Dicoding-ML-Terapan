@@ -68,9 +68,7 @@ Tahapan penting yang dilakukan untuk mengetahui karakteristik data maka dilakuka
 
 Untuk mengolah data sinyak audio ini kita perlu mengubah data yang masih dalam domain waktu untuk menjadi data dalam domain frekuensi, alasannya karena kita dapat mudah menemukan pola-pola frekuensi yang berkarakter, ini sama halnya dengan cara telinga kita mendengar yaitu kita akan peka terhadap bermacam-macam pola frekuensi dari rambatan suara tersebut ketimbang memikirkan amplitudio sinyal suara tiap waktu.
 
-`MFCC` (**Mel Frequency Cepstral Coefficient**) merupakan salah satu bentuk data sinyal audio dalam bentuk domain frekuensi dengan rentang skala Mel, skala Mel ini adalah skala frekuensi yang didasarkan pada cara manusia mendengar suara.
-
-Kode ini akan menampilkan grafik map dari MFCC tiap sample file audio. koefisien MFCC yang diambil berjumlah 13 koefisien karena biasanya koefisien lebih dari 13 adalah sebuah noise, pada grafik tersebut juga terlihat rentang nilai desible antara 100 db - 600 db.
+`MFCC` (**Mel Frequency Cepstral Coefficient**) merupakan salah satu bentuk data sinyal audio dalam bentuk domain frekuensi dengan rentang skala Mel, skala Mel ini adalah skala frekuensi yang didasarkan pada cara manusia mendengar suara. Pada grafik tersebut juga terlihat rentang nilai desible antara 100 db - 600 db.
 
 ### Distribusi Spektral 
 
@@ -85,7 +83,19 @@ dapat dilihat data ini juga terdistribusi normal, dengan jumlah data Roll-off te
 
 ![image](https://github.com/user-attachments/assets/4861caf1-da65-43b4-9aeb-8db942d13562)
 
-Kode ini digunakan untuk melihat distribusi pusat massa sinyal atau `Spectral Centroid`, nilai ini adalah frekuensi rata-rata sinyal yang mengindikasikan karakteristik suara yaitu bernada tinggi atau rendah. Pada grafik di atas dapat terlihat mayoritas pusat massa audio pada dataset ini pada frekuensi antara 2000-2500 Hz.
+Distribusi pusat massa sinyal atau `Spectral Centroid`, nilai ini adalah frekuensi rata-rata sinyal yang mengindikasikan karakteristik suara yaitu bernada tinggi atau rendah. Pada grafik di atas dapat terlihat mayoritas pusat massa audio pada dataset ini pada frekuensi antara 2000-2500 Hz.
+
+**Distribusi Spektral Contrast**
+
+![image](https://github.com/user-attachments/assets/ec1c5f1f-4fc8-4b4f-b2d9-70343259e8ee)
+
+`Spectral Contrast` merupakan data tekait perbedaan energi frekuensi tinggi dan rendah pada sinyal suara. pada grafik terlihat berdistribusi normal, dengan nilai selisih paling banyak ada pada rentang 24-26.
+
+**Distribusi Zero Crossing Rate**
+
+![image](https://github.com/user-attachments/assets/2897bee0-22bc-483d-b6d5-c9161c08e666)
+
+Data tentang tingkat `Zero Crossing Rate`, yaitu seberapa banyak sinyal audio melewati nilai 0, misalkan dari tingkat positif ke nol lalu ke negatif dan juga sebaliknya. semakin banyak nilai ZCR ini berarti tingkat frekuensi juga tinggi, suara ber-intonasi dan tekanan tinggi, dan sebaliknya
 
 ## Modeling
 
