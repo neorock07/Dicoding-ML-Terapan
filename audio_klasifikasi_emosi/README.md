@@ -90,14 +90,16 @@ Bayesian Optimization digunakan untuk mencari kombinasi parameter terbaik pada D
 Pada pelatihan menggunakan Neural Network Loss function yang digunakan adalah `Sparse Categorical Crossentropy`, 
 formula :
 
-   \[
-   \text{Loss} = -\frac{1}{N} \sum_{i=1}^{N} \log(p_{i, y_i})
-   \]
+\[
+\text{Loss} = -\frac{1}{N} \sum_{i=1}^{N} \log(p_{i, y_i})
+\]
 
-   Keterangan:
-   - \( N \) itu jumlah sampel (data) di satu *batch*.
-   - \( p_{i, y_i} \) itu probabilitas prediksi model buat kelas yang bener (kelas sebenarnya) dari data ke-\( i \).
-   - \( y_i \) adalah label sebenarnya dari data ke-\( i \).
+Keterangan:
+- \( N \) adalah jumlah sampel (data) di satu *batch*.
+- \( p_{i, y_i} \) adalah probabilitas prediksi model untuk kelas yang benar (kelas sebenarnya) dari data ke-\( i \).
+- \( y_i \) adalah label sebenarnya dari data ke-\( i \).
+
+Penulisan ini akan tampil dengan format matematika yang rapi di Markdown.
 
 
 Proyek ini menggunakan beberapa metrik evaluasi untuk menilai performa model:
