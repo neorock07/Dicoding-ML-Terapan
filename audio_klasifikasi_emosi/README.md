@@ -7,9 +7,9 @@ Dalam dunia teknologi modern, pengenalan emosi berdasarkan data audio merupakan 
 Penelitian menunjukkan bahwa analisis emosi melalui sinyal audio merupakan pendekatan yang efektif dalam memahami keadaan psikologis seseorang, meski terdapat tantangan dalam perbedaan karakteristik suara seperti intonasi, nada, dan durasi yang harus diperhatikan dalam pengklasifikasian emosi. Proyek ini memanfaatkan teknik ekstraksi fitur audio seperti MFCC (Mel-Frequency Cepstral Coefficients) dan spektral untuk memperoleh representasi karakteristik suara, serta model machine learning dan deep learning untuk melakukan klasifikasi emosi secara akurat.
 
 **Referensi:**
-- [Pengenalan Emosi Berbasis Audio](https://scholar.google.com/)
-- [Mel-Frequency Cepstral Coefficients dalam Analisis Audio](https://scholar.google.com/)
-
+- [MFCC Based Audio Classification Using Machine Learning](https://www.researchgate.net/profile/Asha-Ashok-3/publication/355892482_MFCC_Based_Audio_Classification_Using_Machine_Learning/links/638163407b0e356feb848b3d/MFCC-Based-Audio-Classification-Using-Machine-Learning.pdf)
+- [Automatic Classi¯cation of Bird Sounds: Using MFCC and Mel Spectrogram Features with Deep Learning](https://www.worldscientific.com/doi/pdf/10.1142/S2196888822500300)
+- [Vimal, B., Surya, M., Sridhar, V. S., & Ashok, A. (2021, July). Mfcc based audio classification using machine learning. In 2021 12th International Conference on Computing Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE.](https://www.sciencedirect.com/science/article/pii/S1877050920318512)
 ## Business Understanding
 
 ### Problem Statements
@@ -33,8 +33,10 @@ Tujuan dari proyek ini adalah:
 
 ## Data Understanding
 
-Data yang digunakan dalam proyek ini merupakan data audio rekaman yang sudah dilabeli dengan kelas emosi tertentu. Setiap rekaman berisi informasi tentang intonasi dan nada suara yang dapat menggambarkan emosi seperti marah, sedih, bahagia, takut, dll.
+Data yang digunakan dalam proyek ini merupakan dataset TESS (Toronto Emotional Speech Set) yang terdiri dari audio rekaman yang sudah dilabeli dengan kelas emosi tertentu. Setiap rekaman berisi informasi tentang intonasi dan nada suara yang dapat menggambarkan emosi seperti marah, sedih, bahagia, takut, jijik, netral, dan terkejut.
+Jumlah data per-kelas emosi sebanyak 400 file dalam format `.WAV` (Waveform audio format) jadi total keseluruhan data sebanyak 2800 file `.WAV`. Jumlah data yang seimbang ini akan sangat berguna pada proses pelatihan sehingga tidak akan menimbulkan overfitting pada kelas-kelas data tertentu.
 
+Data audio ini merupakan rekaman suara dari 2 orang wanita berusia 26 dan 64 tahun dengan mengucapkan sebuah kalimat `say the word ...` dengan intonasi dan nada yang bervariasi sehingga mewakili ketujuh emosi tersebut.  
 Dataset ini dapat diunduh dari sumber berikut: [Toronto emotional speech set (TESS)](https://www.kaggle.com/datasets/ejlok1/toronto-emotional-speech-set-tess).
 
 ### Variabel-Variabel dalam Dataset
